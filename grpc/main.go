@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"net"
-	"strconv"
 
 	"lumen-gRPC-demo/grpc/proto"
 	"google.golang.org/grpc"
@@ -20,28 +19,18 @@ func (s SnowflakeService) Next(ctx context.Context, req *proto.NextRequest) (*pr
 	return res, nil
 }
 
-// Parse 解析 snowflake id
-func (s SnowflakeService) Parse(ctx context.Context, req *proto.ParseRequest) (*proto.ParseReply, error) {
-	res := new(proto.ParseReply)
-	_, timestamp, nodeID, serviceID, seq := parse(req.Id)
-	res.Timestamp = timestamp
-	res.NodeId = nodeID
-	res.ServiceId = serviceID
-	res.Seq = seq
-	return res, nil
-}
 
 func main() {
-	config := getConfig()
-	var Addr string
-	Addr = config.Server + ":" + strconv.Itoa(config.Port)
-	nodeID = int64(config.NodeId)
+	//指定我们期望客户端请求的监听端口。
+	Addr := "127.0.0.1:6666"
 	listen, err := net.Listen("tcp", Addr)
 	if err != nil {
 		fmt.Printf("Failed to listen: %v, program exited\n", err)
 		return
 	}
+	//创建 gRPC 服务器的一个实例。
 	server := grpc.NewServer()
+	//在 gRPC 服务器注册我们的服务实现。
 	var snowflakeService SnowflakeService
 	proto.RegisterSnowflakeServer(server, snowflakeService)
 	fmt.Println("Listen on: " + Addr)

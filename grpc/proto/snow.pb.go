@@ -102,134 +102,24 @@ func (m *NextReply) GetId() int64 {
 	return 0
 }
 
-type ParseRequest struct {
-	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ParseRequest) Reset()         { *m = ParseRequest{} }
-func (m *ParseRequest) String() string { return proto.CompactTextString(m) }
-func (*ParseRequest) ProtoMessage()    {}
-func (*ParseRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4cdb8d9edcdba34d, []int{2}
-}
-
-func (m *ParseRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ParseRequest.Unmarshal(m, b)
-}
-func (m *ParseRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ParseRequest.Marshal(b, m, deterministic)
-}
-func (m *ParseRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ParseRequest.Merge(m, src)
-}
-func (m *ParseRequest) XXX_Size() int {
-	return xxx_messageInfo_ParseRequest.Size(m)
-}
-func (m *ParseRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ParseRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ParseRequest proto.InternalMessageInfo
-
-func (m *ParseRequest) GetId() int64 {
-	if m != nil {
-		return m.Id
-	}
-	return 0
-}
-
-type ParseReply struct {
-	Timestamp            int64    `protobuf:"varint,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	NodeId               int64    `protobuf:"varint,2,opt,name=nodeId,proto3" json:"nodeId,omitempty"`
-	ServiceId            int64    `protobuf:"varint,3,opt,name=serviceId,proto3" json:"serviceId,omitempty"`
-	Seq                  int64    `protobuf:"varint,4,opt,name=seq,proto3" json:"seq,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ParseReply) Reset()         { *m = ParseReply{} }
-func (m *ParseReply) String() string { return proto.CompactTextString(m) }
-func (*ParseReply) ProtoMessage()    {}
-func (*ParseReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4cdb8d9edcdba34d, []int{3}
-}
-
-func (m *ParseReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ParseReply.Unmarshal(m, b)
-}
-func (m *ParseReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ParseReply.Marshal(b, m, deterministic)
-}
-func (m *ParseReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ParseReply.Merge(m, src)
-}
-func (m *ParseReply) XXX_Size() int {
-	return xxx_messageInfo_ParseReply.Size(m)
-}
-func (m *ParseReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_ParseReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ParseReply proto.InternalMessageInfo
-
-func (m *ParseReply) GetTimestamp() int64 {
-	if m != nil {
-		return m.Timestamp
-	}
-	return 0
-}
-
-func (m *ParseReply) GetNodeId() int64 {
-	if m != nil {
-		return m.NodeId
-	}
-	return 0
-}
-
-func (m *ParseReply) GetServiceId() int64 {
-	if m != nil {
-		return m.ServiceId
-	}
-	return 0
-}
-
-func (m *ParseReply) GetSeq() int64 {
-	if m != nil {
-		return m.Seq
-	}
-	return 0
-}
-
 func init() {
 	proto.RegisterType((*NextRequest)(nil), "snowflake.NextRequest")
 	proto.RegisterType((*NextReply)(nil), "snowflake.NextReply")
-	proto.RegisterType((*ParseRequest)(nil), "snowflake.ParseRequest")
-	proto.RegisterType((*ParseReply)(nil), "snowflake.ParseReply")
 }
 
 func init() { proto.RegisterFile("snow.proto", fileDescriptor_4cdb8d9edcdba34d) }
 
 var fileDescriptor_4cdb8d9edcdba34d = []byte{
-	// 230 bytes of a gzipped FileDescriptorProto
+	// 142 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2a, 0xce, 0xcb, 0x2f,
 	0xd7, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x04, 0xb1, 0xd3, 0x72, 0x12, 0xb3, 0x53, 0x95,
 	0xb4, 0xb9, 0xb8, 0xfd, 0x52, 0x2b, 0x4a, 0x82, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x84, 0x64,
 	0xb8, 0x38, 0x8b, 0x53, 0x8b, 0xca, 0x32, 0x93, 0x53, 0x3d, 0x53, 0x24, 0x18, 0x15, 0x18, 0x35,
 	0x98, 0x83, 0x10, 0x02, 0x4a, 0xd2, 0x5c, 0x9c, 0x10, 0xc5, 0x05, 0x39, 0x95, 0x42, 0x7c, 0x5c,
-	0x4c, 0x99, 0x30, 0x35, 0x4c, 0x99, 0x29, 0x4a, 0x72, 0x5c, 0x3c, 0x01, 0x89, 0x45, 0xc5, 0xa9,
-	0x30, 0xa3, 0xd0, 0xe5, 0x8b, 0xb8, 0xb8, 0xa0, 0xf2, 0x20, 0xdd, 0x32, 0x5c, 0x9c, 0x25, 0x99,
-	0xb9, 0xa9, 0xc5, 0x25, 0x89, 0xb9, 0x05, 0x30, 0x8b, 0xe0, 0x02, 0x42, 0x62, 0x5c, 0x6c, 0x79,
-	0xf9, 0x29, 0x20, 0x37, 0x30, 0x81, 0xa5, 0xa0, 0x3c, 0x54, 0xe7, 0x31, 0xa3, 0x39, 0x4f, 0x48,
-	0x80, 0x8b, 0xb9, 0x38, 0xb5, 0x50, 0x82, 0x05, 0x2c, 0x0e, 0x62, 0x1a, 0xd5, 0x71, 0x71, 0x06,
-	0xc3, 0xbc, 0x2a, 0x64, 0xc6, 0xc5, 0x02, 0x72, 0xbd, 0x90, 0x98, 0x1e, 0xdc, 0xfb, 0x7a, 0x48,
-	0x7e, 0x97, 0x12, 0xc1, 0x10, 0x2f, 0xc8, 0xa9, 0x54, 0x62, 0x10, 0xb2, 0xe4, 0x62, 0x05, 0x3b,
-	0x5c, 0x48, 0x1c, 0x49, 0x01, 0xb2, 0x57, 0xa5, 0x44, 0x31, 0x25, 0xc0, 0x5a, 0x9d, 0xd8, 0xa3,
-	0x58, 0xc1, 0x21, 0x9e, 0xc4, 0x06, 0xa6, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0xb4, 0x27,
-	0x49, 0xc7, 0x86, 0x01, 0x00, 0x00,
+	0x4c, 0x99, 0x30, 0x35, 0x4c, 0x99, 0x29, 0x46, 0xce, 0x5c, 0x9c, 0xc1, 0x30, 0x63, 0x85, 0xcc,
+	0xb8, 0x58, 0x40, 0x2a, 0x85, 0xc4, 0xf4, 0xe0, 0x56, 0xe9, 0x21, 0xd9, 0x23, 0x25, 0x82, 0x21,
+	0x5e, 0x90, 0x53, 0xa9, 0xc4, 0xe0, 0xc4, 0x1e, 0xc5, 0x0a, 0x76, 0x62, 0x12, 0x1b, 0x98, 0x32,
+	0x06, 0x04, 0x00, 0x00, 0xff, 0xff, 0xdf, 0x01, 0xea, 0xea, 0xb7, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -245,7 +135,6 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SnowflakeClient interface {
 	Next(ctx context.Context, in *NextRequest, opts ...grpc.CallOption) (*NextReply, error)
-	Parse(ctx context.Context, in *ParseRequest, opts ...grpc.CallOption) (*ParseReply, error)
 }
 
 type snowflakeClient struct {
@@ -265,19 +154,9 @@ func (c *snowflakeClient) Next(ctx context.Context, in *NextRequest, opts ...grp
 	return out, nil
 }
 
-func (c *snowflakeClient) Parse(ctx context.Context, in *ParseRequest, opts ...grpc.CallOption) (*ParseReply, error) {
-	out := new(ParseReply)
-	err := c.cc.Invoke(ctx, "/snowflake.Snowflake/Parse", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // SnowflakeServer is the server API for Snowflake service.
 type SnowflakeServer interface {
 	Next(context.Context, *NextRequest) (*NextReply, error)
-	Parse(context.Context, *ParseRequest) (*ParseReply, error)
 }
 
 // UnimplementedSnowflakeServer can be embedded to have forward compatible implementations.
@@ -286,9 +165,6 @@ type UnimplementedSnowflakeServer struct {
 
 func (*UnimplementedSnowflakeServer) Next(ctx context.Context, req *NextRequest) (*NextReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Next not implemented")
-}
-func (*UnimplementedSnowflakeServer) Parse(ctx context.Context, req *ParseRequest) (*ParseReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Parse not implemented")
 }
 
 func RegisterSnowflakeServer(s *grpc.Server, srv SnowflakeServer) {
@@ -313,24 +189,6 @@ func _Snowflake_Next_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Snowflake_Parse_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ParseRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SnowflakeServer).Parse(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/snowflake.Snowflake/Parse",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SnowflakeServer).Parse(ctx, req.(*ParseRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _Snowflake_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "snowflake.Snowflake",
 	HandlerType: (*SnowflakeServer)(nil),
@@ -338,10 +196,6 @@ var _Snowflake_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Next",
 			Handler:    _Snowflake_Next_Handler,
-		},
-		{
-			MethodName: "Parse",
-			Handler:    _Snowflake_Parse_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
