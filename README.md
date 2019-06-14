@@ -1,11 +1,11 @@
 # lumen-gRPC-demo
 lumen、grpc、protobuf、golang 
 
-#### 客户端 lumen框架 lumen-gRPC-demo目录
+#### 客户端目录 lumen-gRPC-demo
 
 ##### 启动客户端
-##### 搭建nginx，目录指向lumen-gRPC-demo/public
-##### 使用postman 发送请求，路由地址：{域名或者ip}/snow
+##### 1.搭建nginx，目录指向lumen-gRPC-demo/public
+##### 2.使用postman 发送请求，路由地址：{域名或者ip}/snow
 
 #### 服务端目录 lumen-grpc-demo/grpc
 
