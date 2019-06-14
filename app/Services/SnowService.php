@@ -33,7 +33,7 @@ class SnowService
         }
 
         $id = $reply->getId();
-        echo $id . PHP_EOL;
 
+        return $id;
     }
 }
