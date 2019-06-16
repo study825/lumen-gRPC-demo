@@ -2,6 +2,10 @@
 
 namespace component\grpc;
 
+/**
+ * Class BaseGrpc
+ * @package component\grpc
+ */
 class BaseGrpc
 {
     const RST = -1;
@@ -21,10 +25,9 @@ class BaseGrpc
     // 发起请求的客户端
     private $clients = [];
     // 请求
-    public $request;
-
-    // grpc返回值
-    private $resStatus;
+    protected $request;
+    //grpc 参数
+    private $options;
 
     /**
      * SimpleGrpc constructor.
@@ -81,20 +84,19 @@ class BaseGrpc
         $this->serviceName = $serviceName;
         $this->actionName = $action;
         $this->request = $request;
-//        $this->options     = $options;
+        $this->options = $options;
     }
 
     private function clear()
     {
-//        $this->request = null;
+        $this->request = null;
 
-//        $this->options = null;
+        $this->options = null;
 
         $this->serviceName = "";
 
         $this->actionName = "";
     }
-
 
 
 }
