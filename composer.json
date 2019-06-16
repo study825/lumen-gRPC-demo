@@ -19,7 +19,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "": ["grpc/proto"]
+            "": ["grpc/proto"],
+            "component\\": ["component"]
         }
     },
     "autoload-dev": {

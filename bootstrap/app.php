@@ -27,6 +27,12 @@ $app = new Laravel\Lumen\Application(
 
 // $app->withEloquent();
 
+
+//config
+
+$app->configure('grpc');
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
