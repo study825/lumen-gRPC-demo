@@ -20,9 +20,9 @@ class SimpleGrpc extends BaseGrpc
         $call = $client->$action($this->request);
         list($reply, $status) = $call->wait();
 
-        if ($status->code != 0) {
-            echo "Call Next() failed, err code: {$status->code}." . PHP_EOL;
-            return;
+        $checkRes = $this->checkStatus($status);
+        if ($checkRes === self::ERR || $checkRes === self::RST) {
+            throw new GrpcException(get_object_vars($status));
         }
 
         $resArr = $this->parseToArray($reply);

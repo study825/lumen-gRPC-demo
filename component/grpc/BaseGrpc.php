@@ -32,6 +32,8 @@ class BaseGrpc
     protected $request;
     //grpc 参数
     private $options;
+    //status 值
+    private $resStatus;
 
     /**
      * SimpleGrpc constructor.
@@ -155,7 +157,7 @@ class BaseGrpc
      *
      * @return array
      */
-    public function toSnakeCase($dataArr)
+    private function toSnakeCase($dataArr)
     {
         $snakeCaseArr = [];
         foreach ($dataArr AS $key => $item) {
@@ -169,4 +171,36 @@ class BaseGrpc
 
         return $snakeCaseArr;
     }
+
+    /**
+     * 检测返回值
+     * @param \stdClass
+     *
+     * @return bool
+     */
+    public function checkStatus($status)
+    {
+        $this->resStatus = $status;
+        if ($this->resStatus->code != self::STATUS_OK) {
+            $this->removeClient();
+            return self::RST;
+        }
+
+        return self::OK;
+    }
+
+    /**
+     * 关闭连接
+     */
+    public function removeClient()
+    {
+        $service = '\\' . $this->namespacePrefix . '\\' . $this->serviceName;
+        /**
+         * @var BaseStub $client
+         */
+        $client = $this->clients[$service];
+        $client->close();
+        $this->clients[$service] = null;
+    }
+
 }
