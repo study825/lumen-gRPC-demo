@@ -2,6 +2,10 @@
 
 namespace component\grpc;
 
+use component\utils\utils;
+use Google\Protobuf\Internal\Message;
+use Google\Protobuf\Internal\RepeatedField;
+
 /**
  * Class BaseGrpc
  * @package component\grpc
@@ -62,8 +66,6 @@ class BaseGrpc
 
     /**
      * @return array
-     * @CreateTime 2018/11/1 11:53:04
-     * @Author     : xingxiaohe@styd.cn
      */
     private function getHostnames()
     {
@@ -98,5 +100,73 @@ class BaseGrpc
         $this->actionName = "";
     }
 
+    /**
+     * @param $data
+     *
+     * @return array
+     * @throws BusinessException
+     * @throws \ReflectionException
+     */
+    protected function parseToArray($data)
+    {
+        $reflects = new \ReflectionClass($data);
+        $methods = $reflects->getMethods(\ReflectionMethod::IS_PUBLIC);
 
+        $arr = [];
+        foreach ($methods as $methods) {
+
+            $funcName = $methods->getName();
+
+            if (substr($funcName, 0, 3) == 'get') {
+                //取key
+                $propKey = substr($funcName, 3);
+                //取值
+                $ref = $data->$funcName();
+
+                //不是对象,直接返回
+                if (!is_object($ref)) {
+                    $arr[$propKey] = $ref;
+                } else if ($ref instanceof RepeatedField) {
+                    $arr[$propKey] = [];
+                    foreach ($ref as $key => $items) {
+                        if (is_object($items)) {
+                            $arr[$propKey][] = $this->parseToArray($items);
+                        } else {
+                            $arr[$propKey][] = $items;
+                        }
+                    }
+                } else if ($ref instanceof Message) {
+                    $arr[$propKey] = $this->parseToArray($ref);
+                } else {
+                    $throwMsg = [
+                        'code' => ErrorException::PARAMS_ERR_CODE,
+                        'msg' => ErrorException::PARAMS_ERR_MSG
+                    ];
+                    throw new ErrorException($throwMsg);
+                }
+            }
+        }
+
+        return $this->toSnakeCase($arr);
+    }
+
+    /**
+     * @param $dataArr
+     *
+     * @return array
+     */
+    public function toSnakeCase($dataArr)
+    {
+        $snakeCaseArr = [];
+        foreach ($dataArr AS $key => $item) {
+            $snakeCaseKey = utils::toSnakeCase($key);
+            if (is_array($item)) {
+                $snakeCaseArr[$snakeCaseKey] = $this->toSnakeCase($item);
+            } else {
+                $snakeCaseArr[$snakeCaseKey] = $item;
+            }
+        }
+
+        return $snakeCaseArr;
+    }
 }

@@ -8,6 +8,15 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/component" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/easyswoole" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/http" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/spl" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/trigger" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/utility" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/easyswoole/validate" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/google/protobuf" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/grpc/grpc" />
@@ -34,6 +43,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/validation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/view" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/jeremeamia/superclosure" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kylekatarnls/update-helper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/lumen-framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mockery/mockery" />
@@ -42,6 +52,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/fast-route" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/version" />
@@ -57,6 +68,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/phpunit-mock-objects" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
@@ -79,7 +91,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/http-kernel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-ctype" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php56" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php70" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-util" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation-contracts" />

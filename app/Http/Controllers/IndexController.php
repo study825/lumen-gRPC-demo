@@ -17,6 +17,8 @@ class IndexController extends Controller
 
     public function snow()
     {
-        return $this->snow->getSnow();
+        $data =  $this->snow->getSnow();
+
+        return $this->success($data);
     }
 }

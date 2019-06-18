@@ -83,6 +83,20 @@
       <path value="$PROJECT_DIR$/vendor/illuminate/http" />
       <path value="$PROJECT_DIR$/vendor/illuminate/events" />
       <path value="$PROJECT_DIR$/vendor/illuminate/config" />
+      <path value="$PROJECT_DIR$/vendor/jeremeamia/superclosure" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/validate" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/utility" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/http" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/spl" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/trigger" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/easyswoole" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/log" />
+      <path value="$PROJECT_DIR$/vendor/easyswoole/component" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
     </include_path>
   </component>
   <component name="PhpUnit">

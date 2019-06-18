@@ -2,14 +2,22 @@
 
 namespace component\grpc;
 
-class SimpleGrpc extends BaseGrpc {
-
+class SimpleGrpc extends BaseGrpc
+{
+    /**
+     * 简单grpc请求
+     *
+     * @param $serviceName
+     * @param $action
+     * @param $request
+     * @param array $options
+     */
     public function send($serviceName, $action, $request, $options = [])
     {
         $this->setAttr($serviceName, $action, $request, $options);
         $client = $this->getClient();
 
-        $call   = $client->$action($this->request);
+        $call = $client->$action($this->request);
         list($reply, $status) = $call->wait();
 
         if ($status->code != 0) {
@@ -17,6 +25,8 @@ class SimpleGrpc extends BaseGrpc {
             return;
         }
 
-        return $reply;
+        $resArr = $this->parseToArray($reply);
+
+        return $resArr;
     }
 }

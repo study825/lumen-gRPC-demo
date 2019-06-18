@@ -19,8 +19,6 @@ class SnowService
 
         $result = $simpleGrpc->send('SnowflakeClient', 'Next', $request);
 
-        $id = $result->getId();
-
-        return $id;
+        return $result;
     }
 }
