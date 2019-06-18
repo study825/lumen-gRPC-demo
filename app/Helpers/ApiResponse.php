@@ -57,8 +57,7 @@ trait ApiResponse
 
         $status = [
             'message' => $status,
-            'code' => $this->statusCode,
-            'seq'  => config('request_seq'),
+            'code' => $this->statusCode
         ];
 
         $data = array_merge($status,$data);
