@@ -104,7 +104,7 @@ class BaseGrpc
      * @param $data
      *
      * @return array
-     * @throws BusinessException
+     * @throws ErrorException
      * @throws \ReflectionException
      */
     protected function parseToArray($data)
