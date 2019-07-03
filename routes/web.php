@@ -15,4 +15,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('snow','IndexController@snow');
+$router->get('snow', 'IndexController@snow');
+$router->get('hello', 'IndexController@sayHello');
+

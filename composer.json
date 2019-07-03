@@ -10,7 +10,8 @@
         "vlucas/phpdotenv": "~2.2",
         "grpc/grpc": "^1.15",
         "google/protobuf": "^3.8",
-        "easyswoole/easyswoole": "3.x"
+        "easyswoole/easyswoole": "3.x",
+        "ext-grpc": "1.16.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

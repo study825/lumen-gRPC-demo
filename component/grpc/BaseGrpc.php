@@ -2,7 +2,10 @@
 
 namespace component\grpc;
 
+use Grpc\BaseStub;
+use Grpc\BidiStreamingCall;
 use component\utils\utils;
+use component\grpc\GrpcException;
 use Google\Protobuf\Internal\Message;
 use Google\Protobuf\Internal\RepeatedField;
 
@@ -18,6 +21,9 @@ class BaseGrpc
     // grpc请求正确状态码
     const STATUS_OK = 0;
 
+    //请求读写
+    protected $calls = [];
+
     // 服务端地址
     protected $hostnames = [];
     // pb文件命名空间前缀
@@ -25,15 +31,15 @@ class BaseGrpc
     // 调用的服务名
     protected $serviceName = "";
     // 调用的方法名
-    private $actionName;
+    protected $actionName;
     // 发起请求的客户端
-    private $clients = [];
+    protected $clients = [];
     // 请求
     protected $request;
     //grpc 参数
-    private $options;
+    protected $options;
     //status 值
-    private $resStatus;
+    protected $resStatus;
 
     /**
      * SimpleGrpc constructor.
@@ -107,7 +113,6 @@ class BaseGrpc
      *
      * @return array
      * @throws ErrorException
-     * @throws \ReflectionException
      */
     protected function parseToArray($data)
     {
@@ -116,7 +121,6 @@ class BaseGrpc
 
         $arr = [];
         foreach ($methods as $methods) {
-
             $funcName = $methods->getName();
 
             if (substr($funcName, 0, 3) == 'get') {
@@ -203,4 +207,57 @@ class BaseGrpc
         $this->clients[$service] = null;
     }
 
+
+
+    /**
+     * 双向流
+     * @return mixed
+     */
+    protected function getCall()
+    {
+        $client = $this->getClient();
+
+        if (empty($this->calls[$this->serviceName . $this->actionName])) {
+            $action = $this->actionName;
+
+            $this->calls[$this->serviceName . $this->actionName] = $client->$action();
+        }
+
+        return $this->calls[$this->serviceName . $this->actionName];
+    }
+
+    /**
+     * 移除calls值
+     */
+    protected function removeCall()
+    {
+        /**
+         * @var AbstractCall $call
+         */
+        if ($this->calls[$this->serviceName . $this->actionName]) {
+            $call = $this->calls[$this->serviceName . $this->actionName];
+            $call->cancel();
+
+            $this->calls[$this->serviceName . $this->actionName] = null;
+        }
+    }
+
+    /**
+     * @param BidiStreamingCall $call
+     *
+     * @return     mixed
+     */
+    protected function read($call)
+    {
+        try {
+            $this->resReply = $call->read();
+            if (empty($this->resReply)) {
+                return $this->checkStatus($call->getStatus());
+            }
+
+            return $this->resReply;
+        } catch (\Exception $e) {
+            return self::RST;
+        }
+    }
 }

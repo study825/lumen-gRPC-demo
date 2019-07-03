@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  *
- * @Author     : screamwolf@likingfit.com
- * @CreateTime 2018/11/5 10:43:40
  */
 
 namespace component\utils;
@@ -18,8 +16,6 @@ class utils
      * @param $requestId
      *
      * @return string
-     * @CreateTime 2018/11/5 15:31:03
-     * @Author     : xingxiaohe@styd.cn
      */
     public static function getSign($serviceId, $nodeId, $timestamp, $requestId)
     {
@@ -33,8 +29,6 @@ class utils
      * @param $key
      *
      * @return string
-     * @CreateTime 2019-01-15 10:09:21
-     * @Author     : xingxiaohe@styd.cn
      */
     public static function toSnakeCase($key)
     {
@@ -46,7 +40,6 @@ class utils
      * @param $uncamelized_words
      * @param string $separator
      * @return string
-     *  @Author     : liutong@styd.cn
      */
     public static function toCamelize($uncamelized_words, $separator='_')
     {

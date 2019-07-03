@@ -4,6 +4,7 @@ option go_package = "proto";
 
 service Snowflake {
     rpc Next(NextRequest) returns (NextReply) {}
+    rpc Hello(stream StreamReq) returns (stream StreamResp) {}
 }
 
 message NextRequest {
@@ -12,4 +13,13 @@ message NextRequest {
 
 message NextReply {
     int64 id = 1;  // snowflake id
+}
+
+
+message StreamReq {
+    string name = 1;  // string name
+}
+
+message StreamResp {
+    string message = 1;  // string message
 }
