@@ -39,4 +39,17 @@ class IndexController extends Controller
         return $this->success($data);
     }
 
+    public function testGo()
+    {
+        $data = $this->snow->testGo();
+
+        return $this->success($data);
+    }
+
+    public function testPhp()
+    {
+        $data = $this->snow->testPhp();
+
+        return $this->success($data);
+    }
 }

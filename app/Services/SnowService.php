@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Grpc;
+use Snowflake\TestReq;
 use Snowflake\StreamReq;
 use Snowflake\NextRequest;
 use component\grpc\GrpcServices;
@@ -28,11 +29,13 @@ class SnowService
      */
     public function getSnow()
     {
+
         // $hostnames = [
         //     0 => config('grpc.host_server')
         // ];
         $hostnames = config('grpc.host_server');
 
+        // echo $hostnames;
         //1.已封装语法
         $grpc = new GrpcServices($hostnames, 'Snowflake');
 
@@ -61,6 +64,10 @@ class SnowService
      */
     public function getHello()
     {
+    
+        return strtoupper(dechex(date('m'))) . date('d') . substr(time(), -3) . substr(microtime(), 2, 4) . sprintf('%02d', rand(0, 99));
+
+
         // $hostnames = [
         //     0 => config('grpc.host_server')
         // ];
@@ -89,5 +96,31 @@ class SnowService
 //        $call->writesDone();
 //        $result = $call->read();
 //        dd($result);
+    }
+
+
+    public function testGo()
+    {
+        $hostnames = config('grpc.host_server');
+
+        //1.已封装语法
+        $grpc = new GrpcServices($hostnames, 'Snowflake');
+
+        $request = new TestReq();
+        $request->setId(1);
+
+        $result = $grpc->bidirectionalGrpc('SnowflakeClient', 'Test', $request);
+
+        return $result;
+    }
+
+    public function testPhp()
+    {
+        $num = 0;
+        for($i=0;$i<1000000000;$i++) {
+            $num++;
+        }
+
+        return $num;
     }
 }

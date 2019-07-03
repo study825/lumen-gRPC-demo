@@ -39,4 +39,14 @@ class SnowflakeClient extends \Grpc\BaseStub {
         $metadata, $options);
     }
 
+    /**
+     * @param array $metadata metadata
+     * @param array $options call options
+     */
+    public function Test($metadata = [], $options = []) {
+        return $this->_bidiRequest('/snowflake.Snowflake/Test',
+        ['\Snowflake\TestRes','decode'],
+        $metadata, $options);
+    }
+
 }

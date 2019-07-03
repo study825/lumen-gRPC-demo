@@ -33,11 +33,25 @@ func (s SnowflakeService) Hello(stream proto.Snowflake_HelloServer) error {
 		if err != nil {
 			return err
 		}
-
+		
 		stream.Send(&proto.StreamResp{Message: "Hello " + in.Name})
+	
 	}
 }
 
+
+func (s SnowflakeService) Test(stream proto.Snowflake_TestServer) error {
+	for {
+		var num int64
+		for i := 0; i < 1000000000; i++ {
+			num++
+		}
+	
+		if err := stream.Send(&proto.TestRes{Res: num}); err != nil{
+			return err
+		}
+	}
+}
 
 
 func main() {

@@ -17,4 +17,6 @@ $router->get('/', function () use ($router) {
 
 $router->get('snow', 'IndexController@snow');
 $router->get('hello', 'IndexController@sayHello');
+$router->get('test_go', 'IndexController@testGo');
+$router->get('test_php', 'IndexController@testPhp');
 
