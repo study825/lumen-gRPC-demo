@@ -19,3 +19,7 @@ lumen、grpc、protobuf、golang
 ##### 3.protoc 以及protoc-gen-grpc 插件
 ##### 4.必要的golang 包，grpc 
 
+#### protoc 编译命令
+protoc --proto_path=./ --php_out=./ --grpc_out=./ --plugin=protoc-gen-grpc=/home/l/grpc/bins/opt/grpc_php_plugin snow.proto
+protoc --go_out=plugins=grpc:. snow.proto
+
